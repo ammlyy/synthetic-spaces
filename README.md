@@ -13,10 +13,27 @@ The graphics are rendered in real time using [Three.js](https://github.com/mrdoo
 
 The audio engine is built using [Tone.js](https://github.com/Tonejs/Tone.js) and runs on top of the rendering animation.
 
+
+## How to use?
 The code was tested on Google Chrome 90.0.4430.93, running at 60fps. Also other Chromium based browsers such as Edge and Opera worked fine.
 We suggest the use of hardware acceleration in Chrome and the use of headphones in order to enjoy the experience as it was conceived.
 
-## Video
+`SPACEBAR` start 
+
+`→` Move to next city
+
+`←` Move to previous city
+
+_(To manually select the city you can use the menu accessible by passing over the drawer at the bottom)_
+
+`wheel` Modify the depth
+
+`mousemove` change camera orientation
+
+`d` trigger special effect 'collapse'/
+
+
+## Visual
 Depth estimation has been an important field of research in the last years for its applications in the field of AR, autonomous drive and 3D scene reconstruction.
 Our idea was to create a virtual 3D scene starting from a 2D image.
 
@@ -61,18 +78,19 @@ Every time the user changes the city, the mode will change accordingly to a tabl
 | Default       | Lydian        |    aug4 |
 
 
-## User controls
-`→` Move to next image
-
-`←` Move to previous image
-
-`wheel`Modify the depth
-
-`mousemove` change camera orientation
-
-`d` trigger special effect 'collapse'
+## Interactions
 
 ## Considerations
 
+### Known issues
+As far as we know, Safari is not supported.
+
+## Run on your machine
+Requirements: Node.js and an active account with an API access key to OpenWeatherMap. 
 
 
+
+- Clone the repo
+- Create a .env file with the following format: `KEY_WEATHER = ' ... '`
+- Run npm install ....
+- Run npm start and build on your local host
