@@ -111,13 +111,32 @@ Every time the user changes the city, the weather is retrieved and it affects bo
 | Extreme       | Locrian       |    m7b/b5 |
 | Default       | Lydian        |    aug4 |
 
-
 and the visual will change as shown in the images below.
 
 Images
+## Interactions 
 
+The weather also affects the point cloud.
 
-## Interactions
+| Weather       | Effect        |
+| ------------- |:-------------:|
+| Clear         | Brighten      |
+| Clouds        | Darken        |
+| Rain          | Drops + Darken|
+| Extreme       | Collapse      |
+| Default       | Nothing       |
+
+The effects are applied in the shader.
+
+- Brighten: multiply each pixel by a certain value.
+
+- Darken: divide each pixel by a certain value.
+
+- Drops: random pixels increase their dimension as if they were hit by a rain drop.
+
+- Collapse: since the extreme state is associated to catastrophical events such as earthquakes, we mapped it to the locrian mode (notably the most dissonant). Also the point cloud will "collapse" while a frequency shifter is applied to the whole audio stream. This weather condition is extremely rare, so the user can activate it manually using the `d` key.
+
+User can rotate the camera with the mouse. This orientation will also affect the panning of the audio, as if the speaker was oriented together with the center of the point cloud and moving consequently.
 
 ## Considerations
 
