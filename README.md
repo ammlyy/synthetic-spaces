@@ -34,21 +34,28 @@ _(To manually select the city you can use the menu accessible by passing over th
 
 
 ## Visual
+
 Depth estimation has been an important field of research in the last years for its applications in the field of AR, autonomous drive and 3D scene reconstruction.
 Our idea was to create a virtual 3D scene starting from a 2D image.
+The initial menu contains an interactive text with the title of the project, a start button and a pop-up section about with a minimal description of the project.
+On window load, all the images are loaded through webpack and the first image is passed to the shader and rendered.
 
-We associated each image to a grid where every pixel was represented by a point with its color. The point depth was then added by sampling a depth map loaded as a texture. 
-All the depth maps were retrieved using the [MiDaS Network](https://github.com/intel-isl/MiDaS), developed by Intel and hosted on TorchHub. 
+We associated each image to a grid where every pixel is represented by a point with its color. The point z-position was then added by sampling a depth map loaded as a texture.
+All the depth maps were retrieved using the [MiDaS Network](https://github.com/intel-isl/MiDaS), developed by Intel and hosted on TorchHub.
 
 This is an example of a depth map obtained from a picture:
 
 ![depth](./readme/depth_example.png)
 
-The scene contains a Mesh, made of _width * height_ points. The material is a custom shader material that we wrote in GLSL. 
-The shader is composed by a vertex shader, that is applied equally to each vertex in the mesh and a fragment shader, responsible of the coloring of the scene after the rasterization of the vertices.
-Since the same code is applied to each vertex by the GPU, we created a set of uniforms that are changed by the CPU and are then passed to the shader. This way we could control and modify the point cloud as time passes.
+The scene contains a Mesh, made of (_width * height_) points. 
+Each point has as attributes its (x,y,z) coordinates and its random generated normal directions, that are used later to animate the transition.
+The material applied onto the mesh is a custom shader material that we specifically wrote in GLSL.
+The shader is composed by a vertex shader, applied equally to each vertex in the mesh and a fragment shader, responsible of the coloring of the scene after the rasterization of the vertices.
+Since the same code is applied to each vertex by the GPU, we could not access directly to time varying variables. For this reason, we created a set of uniforms that are changed at run time by the CPU and are then passed to the shader.
+This way we could control and modify the point cloud as time passes by changing the uniforms that the shader can read.
 
-In order to change image, we had to keep always two images loaded and the transition is applied by ramping through a double exponential function that starting from 0 spreads the points along their normal directions until a maximum is reached, and then saturates to 1. This way we can interpolate between the images using the _mix()_ function in webGL. 
+In order to change image, the shader needs to move smoothly from one image to another. When the animation is triggered, a timer starts and the transition is created by ramping through a double exponential function that starting from 0 spreads the points along their normal directions until a maximum is reached, and then saturates to 1. This way we can interpolate between the images using the _mix()_ function in webGL, that allowed us to move from image at position 0 and image at position 1.
+When the user changes again the image, the image that was at index 1 goes at index 0 and the timer is reset.
 ## Audio
 The rhythmic skeleton of the music is based on a simple grammar, where "0"s correspond to pauses and "1"s to note triggers. 
 The various components use this mechanism to decide when to play, even if they are looping at different speeds.
