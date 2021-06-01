@@ -101,30 +101,15 @@ The data is retrieved using the [OpenWeatherMap API](https://openweathermap.org/
 
 Every time the user changes the city, the weather is retrieved and it affects both audio and visual. In particular the mode in which Pad and Melody are playing will change accordingly to the table below.
 
-| Weather       | Mode          | Chord |
-| ------------- |:-------------:| :-----:|
-| Clear         | Ionian        | maj   |
-| Clouds        | Dorian        |   powerchord |
-| Rain          | Aeolian       |    min7 |
-| Snow          | Myxolidian    |    maj13 |
-| Mist          | Phrygian      |    min11 |
-| Extreme       | Locrian       |    m7b/b5 |
-| Default       | Lydian        |    aug4 |
-
-and the visual will change as shown in the images below.
-
-Images
-## Interactions 
-
-The weather also affects the point cloud.
-
-| Weather       | Effect        |
-| ------------- |:-------------:|
-| Clear         | Brighten      |
-| Clouds        | Darken        |
-| Rain          | Drops + Darken|
-| Extreme       | Collapse      |
-| Default       | Nothing       |
+| Weather       | Mode          | Chord | Effect |
+| ------------- |:-------------:| :-----:| :-----:|
+| Clear         | Ionian        | maj   | Brighten |
+| Clouds        | Dorian        |   powerchord | Darken |
+| Rain          | Aeolian       |    min7 | Drops+Darken |
+| Snow          | Myxolidian    |    maj13 | Whiten+Drops |
+| Mist          | Phrygian      |    min11 | Murky |
+| Extreme       | Locrian       |    m7b/b5 | Collapse |
+| Default       | Lydian        |    aug4 | None |
 
 The effects are applied in the shader.
 
@@ -134,7 +119,17 @@ The effects are applied in the shader.
 
 - Drops: random pixels increase their dimension as if they were hit by a rain drop.
 
+- Whiten: adds a white overlay and animates as the rain condition.
+
+- Murky: adds a grey overlay.
+
 - Collapse: since the extreme state is associated to catastrophical events such as earthquakes, we mapped it to the locrian mode (notably the most dissonant). Also the point cloud will "collapse" while a frequency shifter is applied to the whole audio stream. This weather condition is extremely rare, so the user can activate it manually using the `d` key.
+
+
+
+Images
+## Interactions 
+
 
 User can rotate the camera with the mouse. This orientation will also affect the panning of the audio, as if the speaker was oriented together with the center of the point cloud and moving consequently.
 
