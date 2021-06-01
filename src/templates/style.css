@@ -1,0 +1,226 @@
+@font-face {
+  font-family: 'Poppins-Thin'; /*a name to be used later*/
+  src: url("../../assets/fonts/Poppins-Thin.woff") format('woff'); /*URL to font*/
+}
+@font-face {
+  font-family: 'Poppins-ExtraLight'; /*a name to be used later*/
+  src: url("../../assets/fonts/Poppins-ExtraLight.woff") format('woff'); /*URL to font*/
+}
+
+@font-face {
+  font-family: 'Poppins-Light'; /*a name to be used later*/
+  src: url("../../assets/fonts/Poppins-Light.woff") format('woff'); /*URL to font*/
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+#mainContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay{
+  position: absolute;
+}
+
+#c {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#subtitle {
+  font-family: 'Poppins-Light';
+  font-size: 2.5vw;
+  font-weight: 100;
+  color: white;
+  z-index: 10;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0;
+  cursor: pointer;
+}
+
+#about {
+  font-family: 'Poppins-Light';
+  font-size: 1.25vw;
+  font-weight: 100;
+  color: white;
+  z-index: 10;
+  margin: 0;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#about-popup {
+  text-align: center;
+  font-family: 'Poppins-Light';
+  font-size: 1.25vw;
+  font-weight: 100;
+  color: white;
+  z-index: 10;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(49, 49, 49, 0.95);
+  border-radius: 25px;
+  transition: 0.5s;
+}
+
+.popup-closed {
+  width: 0;
+  height: 0;
+}
+
+.popup-opened {
+  width: 70%;
+  height: 80%;
+}
+
+#cityName {
+  text-align: center;
+  font-family:'Poppins-Light';
+  font-size: 4.5vw;
+  font-weight: 100;
+  color: white;
+  z-index: 10;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0;
+}
+
+.bottomInfo {
+  text-align: center;
+  font-family:'Poppins-Thin';
+  font-size: 1.5vw;
+  font-weight: 100;
+  color: white;
+  z-index: 10;
+  left: 1%;
+}
+
+#weatherInfo {
+  bottom: 2.5%;
+}
+
+#modeInfo {
+  bottom: 1%;
+  margin: 0;
+}
+
+.panel-closed {
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 2%;
+  width: 10%;
+  height: 1.5%;
+  transition: 0.4s;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+}
+
+.panel-opened {
+  height: 85%;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.city-closed {
+  position: relative;
+  height: 45%;
+  width: 23%;
+  border-radius: 25px;
+  background-color: black;
+  transition: 0.4s;
+  opacity: 0;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  font-family:'Poppins-ExtraLight';
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.city-opened {
+  opacity: 1;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.35;
+  transition: 0.5s;
+  filter: blur(8px);
+}
+
+.city-opened:hover {
+  cursor: pointer;
+}
+.city-opened:hover .bg-image,
+.city-opened:focus .bg-image {
+  transform: scale(1.2);
+  opacity: 0.7;
+  filter: blur(0px);
+}
+.city-opened:hover .city-label-opened,
+.city-opened:focus .city-label-opened {
+  filter: blur(100px);
+} 
+
+.city-label {
+  position: absolute;
+  font-size: 0;
+  z-index: 15;
+  transition: 0.5s;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.city-label-opened {
+  font-size: 2vw;
+  font-weight: 100;
+}
+
+#audioIcon {
+  color: white;
+  right: 1.5%;
+  top: 3.5%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#descriptionContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#closeIcon {
+  color: white;
+  margin: 0;
+  top: 2%;
+  right: 2%;
+  cursor: pointer;
+}
