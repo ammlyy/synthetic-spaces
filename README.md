@@ -14,7 +14,7 @@ The graphics are rendered in real time using [Three.js](https://github.com/mrdoo
 The audio engine is built using [Tone.js](https://github.com/Tonejs/Tone.js) and runs on top of the rendering animation.
 
 
-## How to use?
+## How to use
 The code was tested on Google Chrome 90.0.4430.93, running at 60fps. Also other Chromium based browsers such as Edge and Opera worked fine.
 
 Since the rendering of the point cloud is a quite heavy task, we suggest the use of hardware acceleration (external GPU if available) in Chrome to avoid possible issues such as latency or audio clicking.
@@ -99,39 +99,41 @@ The generated children become the new population and the algorithm iterate again
 To further enhance the immersivity, we incorporated real time weather data from the selected city. 
 The data is retrieved using the [OpenWeatherMap API](https://openweathermap.org/).
 
-Every time the user changes the city, the weather is retrieved and it affects both audio and visual. In particular the mode in which Pad and Melody are playing will change accordingly to the table below.
+Every time the user changes the city, the weather is retrieved and it affects both audio and visual. In particular the mode in which Pad and Melody are playing will change and an effect will be applied to the point cloud accordingly to the table below.
 
 | Weather       | Mode          | Chord | Effect |
 | ------------- |:-------------:| :-----:| :-----:|
 | Clear         | Ionian        | maj   | Brighten |
 | Clouds        | Dorian        |   powerchord | Darken |
 | Rain          | Aeolian       |    min7 | Drops+Darken |
-| Snow          | Myxolidian    |    maj13 | Whiten+Drops |
+| Snow          | Myxolidian    |    maj13 | Drops+Whiten |
 | Mist          | Phrygian      |    min11 | Murky |
 | Extreme       | Locrian       |    m7b/b5 | Collapse |
 | Default       | Lydian        |    aug4 | None |
 
-The effects are applied in the shader.
+<br/>The visual effects are applied in the shader as follows:
 
-- Brighten: multiply each pixel by a certain value.
+- Default image.
 
-- Darken: divide each pixel by a certain value.
+- Brighten: multiply each pixel by a brighten value.
+
+- Darken: divide each pixel by a darken value.
 
 - Drops: random pixels increase their dimension as if they were hit by a rain drop.
 
-- Whiten: adds a white overlay and animates as the rain condition.
+- Whiten: adds a white overlay.
 
 - Murky: adds a grey overlay.
 
 - Collapse: since the extreme state is associated to catastrophical events such as earthquakes, we mapped it to the locrian mode (notably the most dissonant). Also the point cloud will "collapse" while a frequency shifter is applied to the whole audio stream. This weather condition is extremely rare, so the user can activate it manually using the `d` key.
 
-
-
 Images
 ## Interactions 
+Two types of interactions are available:
 
+- **Camera movement**: camera can be rotated by moving the mouse. This orientation will also affect the panning of the audio, as if the speaker was oriented together with the center of the point cloud and moving consequently.
+- **Depth increase**: thanks to the mouse wheel the depth can be increased or decreased. This change will also affect the curoff frequency of a filter applied to the Pad.
 
-User can rotate the camera with the mouse. This orientation will also affect the panning of the audio, as if the speaker was oriented together with the center of the point cloud and moving consequently.
 
 ## Considerations
 
