@@ -75,7 +75,7 @@ The rules of the L-System are the following:
 - 1 -> 01, 10, 11, 12
 - 2 -> 02, 20, 22
 
-All the elements are sequenced thanks to the [Loop](https://tonejs.github.io/docs/14.7.77/Loop.html) class provided by Tone.js. More in detail each element's sequencing loop is of different durations (half-note for the Pad, quarter-note for the Melody and one measure for the Sample Player) and at every loop the rhythmic structure is analyzed to decide wether the element should play a note or not.
+All the elements are sequenced thanks to the [Loop](https://tonejs.github.io/docs/14.7.77/Loop.html) class provided by Tone.js. More in detail each element's sequencing loop is of different durations (half-note for the Pad, eighth-note for the Melody and one measure for the Sample Player) and at every loop the rhythmic structure is analyzed to decide wether the element should play a note or not.
 
 Both the Pad and the Sample Player maintain the same rhythmic structure, while for the Melody it changes every 4 repetitions following a **Genetic Algorithm**. We can subdivide the algorithm into five main steps:
 
