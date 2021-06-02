@@ -140,7 +140,11 @@ User can rotate the camera with the mouse. This orientation will also affect the
 ## Considerations
 
 ### Known issues
-As far as we know, Safari is not supported.
+As far as we know, Safari is not supported. 
+
+The whole app is quite heavy. A better way could have been using FBO particles thus a GPGPU approach as suggested in [this blog post](http://barradeau.com/blog/?p=621) by Nicolas Barradeau.
+If you are interested, Mario Carrillo did a porting of the original code to ES6. Give it a look [here](https://github.com/marioecg/gpu-party/). Basically instead of reading the position attribute from the CPU, the position of the particles is rendered as a texture off-screen and passed directly to the shader, so computation will mostly happen on the GPU. Also animations will happen by changing the position texture.
+
 
 ## Run on your machine
 Requirements: Node.js and an active account with an API access key to OpenWeatherMap. 
