@@ -4,6 +4,8 @@ uniform float uMorph;
 uniform bool uSunny;
 uniform bool uClouds;
 uniform bool uRain;
+uniform bool uSnow;
+uniform bool uMist;
 
 
 varying vec2 vPUv;
@@ -27,6 +29,17 @@ void main() {
     colA.g = min(255.0, colA.g * DIV);
     colA.b = min(255.0, colA.b * DIV);
     }
+    if (uSnow){
+    colA.rgb = mix(colA.rgb, vec3(1.0), 0.3);
+
+    }
+    if (uMist){
+    colA.rgb = mix(colA.rgb, vec3(0.5), 0.3);
+
+    }
+
+
+
 
 
     gl_FragColor = vec4(colA ) ;

@@ -1,6 +1,6 @@
 import { AudioSource } from "./audioSource";
 import * as Tone from "tone";
-import { Melody } from "../grammars/Melody";
+import { MelodyRules } from "../grammars/MelodyRules";
 
 const CHORDS = [
   [0, 4, 12, 19],                            // 0: ionian -> clear (maj) 1-3-5-8
@@ -37,7 +37,7 @@ export class Pad extends AudioSource {
       release: release,
     };
 
-    this.melody = new Melody(0)
+    this.melody = new MelodyRules(0)
 	
     this.synth = new Tone.PolySynth(Tone.Synth, {
       oscillator: {

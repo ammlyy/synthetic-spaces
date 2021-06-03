@@ -14,6 +14,7 @@ uniform bool uDestroy;
 uniform bool uAnimate;
 uniform bool uRain;
 uniform bool uSunny;
+uniform bool uSnow;
 
 #pragma glslify: noiz = require(glsl-noise/simplex/2d)
 
@@ -87,8 +88,8 @@ void main() {
 
 	float randSize = 0.0;
 
-	if(uRain) {
-		float scaledTime = uTime * 0.001;
+	if(uRain || uSnow) {
+		float scaledTime = (uTime * 0.001 )+ (0.001 * float(uSnow));
 		float var = noiz(vec2( (scaledTime + displacement.x) / scaledTime, (scaledTime + displacement.z) / scaledTime));
 		if (var >= 0.8){
 			randSize = var * 3.;

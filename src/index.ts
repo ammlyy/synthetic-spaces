@@ -3,8 +3,8 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.css"
 import * as THREE from "three"
 import { ParticleSystem } from "./visual/ParticleSystem"
 import { AudioSource } from "./audio/audioSource"
-import { NoiseGenerator } from "./audio/NoiseGenerator"
-import { SparseNotes } from './audio/SparseNotes'
+import { SamplePlayer } from "./audio/SamplePlayer"
+import { Melody } from './audio/Melody'
 import { Pad } from "./audio/Pad"
 
 const TEXT_ANIMATION_TIME = 250;
@@ -91,8 +91,8 @@ export default class App {
     Genetic.init()
     this.rhythmicStructure = Genetic.getSequence()
     this.audioSources.push(new Pad(0, "G3", 2, 0.8, 0.5, 2, this.rhythmicStructure))
-    this.audioSources.push(new SparseNotes(0, "G3", 0.05, 0.5, 0.3, 1, "8n", this.rhythmicStructure))
-    this.audioSources.push(new NoiseGenerator(0, "4n", LSystem.expand(this.rhythmicStructure, 12)))
+    this.audioSources.push(new Melody(0, "G3", 0.05, 0.5, 0.3, 1, "8n", this.rhythmicStructure))
+    this.audioSources.push(new SamplePlayer(0, "4n", LSystem.expand(this.rhythmicStructure, 12)))
 
     //TIMER for temporal modifications
     this.clock = new THREE.Clock(true)

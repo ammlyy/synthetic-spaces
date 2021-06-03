@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import { Melody } from "./../grammars/Melody";
+import { MelodyRules } from "../grammars/MelodyRules";
 interface ADSR {
   attack: number;
   decay: number;
@@ -24,7 +24,7 @@ export abstract class AudioSource {
   protected noteDuration: string;     //Not used by pad 
   protected root: string;
   protected envelope: ADSR;
-  protected melody: Melody
+  protected melody: MelodyRules
   protected thirds:number
 
   protected isPlaying: boolean
