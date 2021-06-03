@@ -1,4 +1,6 @@
 
+const API_KEY_WEATHER = "10082cbf006e2c41c9d1a90cfa631624"
+
 const cities = ['Tokyo', 'London', 'Marrakech' , 'Lisboa', 'Havana', 'Barcelona', 'Venice', 'Mexico City']
 
 export class Data {
@@ -10,7 +12,7 @@ export class Data {
 
     setCity(city: string) {
         this.xhr.open('GET',
-            "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + process.env.KEY_WEATHER)
+            "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_KEY_WEATHER)
     }
 
     getCityName(index: number) {

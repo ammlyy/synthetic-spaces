@@ -4,7 +4,6 @@ import {
   RawShaderMaterial,
   ShaderMaterial,
 } from "three";
-import { Runway } from "../runway";
 import { ImageManager } from "./ImageManager";
 import { Text } from "./Text";
 const glslify = require("glslify");
@@ -102,7 +101,10 @@ export class ParticleSystem {
       uDestroy: { type: "b", value: false },
       uRain: { type: 'b', value: false },
       uSunny: { type: 'b', value: false },
-      uClouds: { type: 'b', value: false }
+      uClouds: { type: 'b', value: false },
+      uSnow: {type: 'b', value: false},
+      uMist: {type: 'b', value: false}
+
 
     };
 
@@ -231,6 +233,8 @@ export class ParticleSystem {
         this.uniforms.uRain.value = false
         this.uniforms.uSunny.value = false
         this.uniforms.uClouds.value = false  
+        this.uniforms.uSnow.value = false
+        this.uniforms.uMist.value = false
       }
 
       switch (weather) {
@@ -242,6 +246,13 @@ export class ParticleSystem {
           break
         case 'Clouds':
           this.uniforms.uClouds.value = true
+          break
+        case 'Snow':
+          this.uniforms.uSnow.value = true
+          break
+        case 'Mist': 
+          this.uniforms.uMist.value = true
+          break
       }
   
     }, 2250)

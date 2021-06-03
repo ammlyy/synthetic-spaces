@@ -1,5 +1,5 @@
 const path = require("path");
-require('dotenv').config()
+const Dotenv = require('dotenv-webpack')
 
 var SRC = path.resolve(__dirname, "./assets/samples");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -58,6 +58,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./src/templates/index.html"),
     }),
-    new DotenvWebpackPlugin()
+    new Dotenv({
+      path: '.env'    })
   ],
 };
