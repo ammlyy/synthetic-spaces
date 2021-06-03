@@ -13,6 +13,7 @@ The graphics are rendered in real time using [Three.js](https://github.com/mrdoo
 
 The audio engine is built using [Tone.js](https://github.com/Tonejs/Tone.js) and runs on top of the rendering animation.
 
+The application is accessible [here](https://synthetic-spaces.github.io/)
 
 ## How to use
 The code was tested on Google Chrome 90.0.4430.93, running at 60fps. Also other Chromium based browsers such as Edge and Opera worked fine.
