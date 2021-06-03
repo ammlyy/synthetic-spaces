@@ -6,14 +6,14 @@ Our main inspirations were the work of all those artists who try to connect art 
 
 The project was born during the *Creative Programming and Computing 2020 Hackaton* and was initially thought (and prototyped) as a physical installation, realized with different tools such as TouchDesigner and Ableton Live. We then decided, coherently with the underlying motivation, to move to a web application in order to make the experience accessible to everyone.
 
+The application is accessible [here](https://synthetic-spaces.github.io/)
+
 ## Project specifics
 As already mentioned the project is a web-based application, written in HTML, CSS and Typescript. All the code and the assets are then bundled through Webpack and hosted on a Github Page.
 
 The graphics are rendered in real time using [Three.js](https://github.com/mrdoob/three.js) and some custom shaders written in GLSL and loaded through [Glslify](https://github.com/glslify/glslify).
 
 The audio engine is built using [Tone.js](https://github.com/Tonejs/Tone.js) and runs on top of the rendering animation.
-
-The application is accessible [here](https://synthetic-spaces.github.io/)
 
 ## How to use
 The code was tested on Google Chrome 90.0.4430.93, running at 60fps. Also other Chromium based browsers such as Edge and Opera worked fine.
