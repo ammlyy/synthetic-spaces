@@ -131,7 +131,18 @@ Every time the user changes the city, the weather is retrieved and it affects bo
 
 - Collapse: since the extreme state is associated to catastrophical events such as earthquakes, we mapped it to the locrian mode (notably the most dissonant). Also the point cloud will "collapse" while a frequency shifter is applied to the whole audio stream. This weather condition is extremely rare, so the user can activate it manually using the `d` key.
 
-Images
+<p float="center">
+  <img src="./readme/Default.jpg" width="30%" />
+  <img src="./readme/Clear.jpg" width="30%" /> 
+  <img src="./readme/Clouds.jpg" width="30%" />
+</p>
+
+<p float="center">
+  <img src="./readme/Rain-GIF.gif" width="30%" />
+  <img src="./readme/Snow-GIF.gif" width="30%" /> 
+  <img src="./readme/Extreme-GIF.gif" width="30%" />
+</p>
+
 ## Interactions 
 Two types of interactions are available:
 
